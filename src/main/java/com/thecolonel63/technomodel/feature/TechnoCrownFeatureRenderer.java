@@ -25,12 +25,10 @@ public class TechnoCrownFeatureRenderer<T extends Entity & Saddleable, M extends
 
     @SuppressWarnings("ConstantConditions")
     public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, T entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
-        if (entity.hasCustomName() && entity.getCustomName().getString().equals("Technoblade")) {
-            this.getContextModel().copyStateTo(this.model);
-            this.model.animateModel(entity, limbAngle, limbDistance, tickDelta);
-            this.model.setAngles(entity, limbAngle, limbDistance, animationProgress, headYaw, headPitch);
-            VertexConsumer vertexConsumer = vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(this.TEXTURE));
-            this.model.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
-        }
+        this.getContextModel().copyStateTo(this.model);
+        this.model.animateModel(entity, limbAngle, limbDistance, tickDelta);
+        this.model.setAngles(entity, limbAngle, limbDistance, animationProgress, headYaw, headPitch);
+        VertexConsumer vertexConsumer = vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(this.TEXTURE));
+        this.model.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
     }
 }
